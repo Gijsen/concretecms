@@ -5,13 +5,12 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - DOCKER_CLI_EXPERIMENTAL=enabled
-      - CONCRETE_CMS_REPO_URL: "https://github.com/concrete5/concrete5.git"
-      - IMAGE_NAME: gijsen/concrete-cms
-      - TAG: latest
+      CONCRETE_CMS_REPO_URL: "https://github.com/concrete5/concrete5.git"
+      IMAGE_NAME: "gijsen/concrete-cms"
+      TAG: "latest"
 
     steps:
-      # Step 1: Clone the Concrete CMS repo
+      # Step 1: Checkout Concrete CMS repository
       - name: Checkout Concrete CMS
         image: alpine:3.14
         commands:
@@ -24,7 +23,7 @@ pipeline:
           - cd concrete5
           - docker build -t ${IMAGE_NAME}:${TAG} .
 
-      # Step 3: Push the image to the Docker registry
+      # Step 3: Push the image to Docker registry
       - name: Push Docker image to registry
         image: docker:20.10.16
         commands:
