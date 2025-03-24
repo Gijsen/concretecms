@@ -6,7 +6,7 @@ pipeline:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - DOCKER_CLI_EXPERIMENTAL=enabled
-      - CONCRETE_CMS_REPO_URL: https://github.com/concrete5/concrete5.git
+      - CONCRETE_CMS_REPO_URL: "https://github.com/concrete5/concrete5.git"
       - IMAGE_NAME: gijsen/concrete-cms
       - TAG: latest
 
